@@ -6044,7 +6044,7 @@ static SDL_AudioDeviceID OpenAudioDeviceLocked(const char *devicename, int iscap
         device3 = iscapture ? SDL_AUDIO_DEVICE_DEFAULT_RECORDING : SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK;
     } else {
         AudioDeviceList *list = iscapture ? &AudioSDL3RecordingDevices : &AudioSDL3PlaybackDevices;
-        const int total = list->num_devices;
+        const int total = GetNumAudioDevices(iscapture);
         int i;
         for (i = 0; i < total; i++) {
             if (SDL3_strcmp(list->devices[i].name, devicename) == 0) {
